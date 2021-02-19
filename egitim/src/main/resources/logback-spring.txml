@@ -1,0 +1,61 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+             <level>WARNING</level>
+            <level>ERROR</level>
+            <level>INFO</level>
+<!--             <level>FINE</level> -->
+        </filter>      
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="STDOUT1" class="ch.qos.logback.core.ConsoleAppender">
+	<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+		<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} %-5level %logger{36} - %msg%n
+                </Pattern>
+	</encoder>
+ </appender>
+
+    <appender name="TIME_BASED_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${user.home}/sevkiyat.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${user.home}/yazilim/sevkiyat.%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+        
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>UTF-8</charset>
+            <pattern>${HOSTNAME} %-5level %d{yyyy-MM-dd HH:mm:ss.SSS}  %logger{36} %M - %L : %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+  	
+  	<logger name="org.apache" level="ERROR" />  
+  	<logger name="org.mongodb" level="ERROR" />
+  	<logger name="com.zaxxer.hikari" level="ERROR" />
+  	
+  	<logger name="org.hibernate" level="ERROR" />
+  	<logger name="org.springframework" level="ERROR" />
+  	<logger name="springfox" level="ERROR" />
+  	<logger name="org.quartz" level="ERROR" />
+  	<logger name="javax" level="ERROR" />
+  	
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" />
+  	<logger name="org.hibernate.SQL" level="DEBUG" />
+  	<logger name="org.hibernate.loader" level="ERROR" />
+  	<logger name="org.hibernate.event" level="ERROR" />
+  	
+  	<logger name="com.ommg" level="DEBUG" />  	
+
+    <root level="ALL">
+        <appender-ref ref="TIME_BASED_FILE"/>        
+        <appender-ref ref="STDOUT1"/>
+    </root>
+
+</configuration>

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: egitim_backend
+  profiles:
+    active: "preprod"
