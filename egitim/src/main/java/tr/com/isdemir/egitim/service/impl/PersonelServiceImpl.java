@@ -25,10 +25,7 @@ public class PersonelServiceImpl implements PersonelService {
 	@Override
 	public List<EmpDTO> personelListe(Long deptno) {
 		log.info("personelListe başladı.");
-		List<Emp> empListe = empRepository.findAll();
-		for (Emp emp : empListe) {
-			System.out.println("Personel Adı Soyadı = " + emp.getEname());
-		}
+		// not implemented
 		return null;
 	}
 }

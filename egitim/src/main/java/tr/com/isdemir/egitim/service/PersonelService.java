@@ -6,5 +6,6 @@ import tr.com.isdemir.egitim.dto.EmpDTO;
 
 public interface PersonelService {
 	
-	List<EmpDTO> personelListe(Long deptno);
+	List<EmpDTO> personelListe(Long deptno);	
+	
 }
