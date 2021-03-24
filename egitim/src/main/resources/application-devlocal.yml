@@ -28,7 +28,7 @@ spring:
     database-platform: org.hibernate.dialect.Oracle10gDialect
     open-in-view: false
   datasource:
-    jndi-name: jdbc/sevkDevDS
+    jndi-name: jdbc/egitimDevDS
     hikari:
       connection-timeout: 20000
       minimum-idle: 10

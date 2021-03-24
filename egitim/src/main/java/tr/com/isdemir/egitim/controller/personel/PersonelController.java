@@ -40,14 +40,14 @@ public class PersonelController {
 	@PostMapping(value = "/personel-kaydet", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponsePayload personelKaydet(@RequestBody EmpDTO empDTO) {
 		log.info("personelKaydet başladı: " + EntityUtils.java2JSON(empDTO));
-		//not implemented
-		return new ResponsePayload(ResponseEnum.OK);
+		EmpDTO dto = personelService.personelKaydet(empDTO);
+		return new ResponsePayload(ResponseEnum.OK, dto);
 	}
 	
 	@PostMapping(value = "/personel-sil", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponsePayload nakliyeciKaydet(@RequestBody EmpDTO empDTO) {
 		log.info("nakliyeciKaydet başladı: " + EntityUtils.java2JSON(empDTO));
-		// not implemented
+		personelService.personelPersonelSil(empDTO);
 		return new ResponsePayload(ResponseEnum.OK);
 	}
 
